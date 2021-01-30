@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <!--Header and Menu Section-->
+    <header class="container">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a class="active" href="#">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--Booking Section-->
+    <main class="main-content container">
+        <div class="booking-form">
+            <h3>Booking Flights</h3>
+            <div class="input-group">
+                <label for="">Flying From</label>
+                <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
+            </div>
+            <div class="input-group">
+                <label for="">Flying To</label>
+                <input class="inp-style" type="text" name="" placeholder="New York, United States">
+            </div>
+            <div class="inputs">
+                <div class="input-group">
+                    <label" for="">Departure</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+                <div class="input-group">
+                    <label for="">Return</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+            </div>
+            <div class="input-group f-class">
+                <div>
+                    <label for="">First Class ($150)</label>
+                    <input class="inp-style inp-width" type="number" name="" id="firstClass" onchange="firstClassHandler()">
+                </div>
+                <div class="plus-minus-btn">
+                    <p><span class="plus-minus-btn" onclick="firstplus()">+</span> 
+                        <span onclick="firstminus()" class="plus-minus-btn">-</span></p>
+                       
+                </div>
+            </div>
+            
+            <div class="input-group f-class">
+                <div>
+                    <label for="">Economy ($100)</label>
+                    <input class="inp-style inp-width" type="number" name="" id="economyClass">
+                </div>
+                <div class="plus-minus-btn">
+                    <p> <span onclick="economyplus()">+</span> 
+                        <span onclick="economyminus()">-</span> </p>
+                </div>
+            </div>
+            <div class="calculations">
+                <div class="amount">
+                    <div class="left">
+                        <p>Subtotal</p>
+                    </div>
+                    <div class="right">
+                        <p id="subtotal">$0</p>
+                    </div>
+                </div>
+
+                <div class="amount">
+                    <div class="left">
+                        <p>Charge 10% VAT</p>
+                    </div>
+                    <div class="right">
+                        <p id="vat">$0</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="amount">
+                    <div class="left">
+                        <h4>Total</h4>
+                    </div>
+                    <div class="right">
+                        <p id="total">$0</p>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-style" onclick="allart()"> Book Now</button>
+        </div>
+
+        <div class="booking-content">
+            <h1>discover <br> around the world</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise voluptatibus quam</p>
+        </div>
+    </section>
+
+    <!--Thank You-->
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+<script>
+
+
+    let firstclass=0
+    let = economy=0
+    let = vat
+    let = total
+    let = subtotal
+    
+    function firstplus(){
+        let value = parseInt(document.getElementById('firstClass').value, 10);
+        value = isNaN(value) ? 0 : value;
+        value++;
+       let numberOfTicket= document.getElementById('firstClass').value = value;
+        firstCalculation(numberOfTicket) 
+    }
+    
+    function firstminus(){
+        let value = parseInt(document.getElementById('firstClass').value, 10);
+        value = isNaN(value) ? 0 : value;
+        if(value>0){
+            value--;
+        } 
+       let numberOfTicket= document.getElementById('firstClass').value = value;
+        firstCalculation(numberOfTicket)   
+    }
+    
+    
+    function economyplus(){
+        let value = parseInt(document.getElementById('economyClass').value, 10);
+        value = isNaN(value) ? 0 : value;
+        value++;
+       let numberOfTicket= document.getElementById('economyClass').value = value;
+       economyCalculation(numberOfTicket) 
+    }
+    
+    function economyminus(){
+        let value = parseInt(document.getElementById('economyClass').value, 10);
+        value = isNaN(value) ? 0 : value;
+        if(value>0){
+            value--;
+        } 
+       let numberOfTicket= document.getElementById('economyClass').value = value;
+       economyCalculation(numberOfTicket)   
+    }
+    
+    
+    function firstCalculation(numberOfTicket){
+           firstclass=1
+           firstclass=numberOfTicket*150
+           finalCalculation()
+    }
+    
+    function economyCalculation(numberOfTicket){
+         economy=1
+         economy=numberOfTicket*100
+         finalCalculation()
+    }
+    
+    function finalCalculation(){
+        
+         subtotal=firstclass+economy;
+         vat= subtotal* 0.1
+          total=subtotal+vat
+         console.log(economy)
+         document.getElementById("subtotal").innerHTML="$"+subtotal
+         document.getElementById("vat").innerHTML="$"+vat
+         document.getElementById("total").innerHTML="$"+total
+    }
+    
+    function allart(){
+        if(subtotal && vat && total){
+            alert("Subtotal: "+subtotal+"           "+"Vat: "+vat+"           "+ "Total: "+total+"\n***********Congratulations!***********")
+        }else{
+            alert("****book your ticket first******")
+        }
+        
+    }
+    
+    
+        </script>
