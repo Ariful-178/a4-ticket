@@ -55,8 +55,8 @@
                     <input class="inp-style inp-width" type="number" name="" id="firstClass" onchange="firstClassHandler()">
                 </div>
                 <div class="plus-minus-btn">
-                    <p><span class="plus-minus-btn" onclick="firstplus()">+</span> 
-                        <span onclick="firstminus()" class="plus-minus-btn">-</span></p>
+                    <p><span class="plus-minus-btn" onclick="firstplus()" style="padding:0 3px; border: 1px solid purple ; border-radius: 2px;"  >+</span>
+                        <span onclick="firstminus()" class="plus-minus-btn" style="padding:0 7px; border: 1px solid purple ; border-radius: 2px;">-</span></p>
                        
                 </div>
             </div>
@@ -67,8 +67,8 @@
                     <input class="inp-style inp-width" type="number" name="" id="economyClass">
                 </div>
                 <div class="plus-minus-btn">
-                    <p> <span onclick="economyplus()">+</span> 
-                        <span onclick="economyminus()">-</span> </p>
+                    <p> <span onclick="economyplus()" style="padding:0 3px; border: 1px solid purple ; border-radius: 2px;">+</span>
+                        <span onclick="economyminus()" style="padding:0 7px; border: 1px solid purple ; border-radius: 2px;">-</span> </p>
                 </div>
             </div>
             <div class="calculations">
@@ -109,95 +109,86 @@
     </section>
 
     <!--Thank You-->
+                                    
+                                     <script>
+            let firstclass = 0
+            let = economy = 0
+            let = vat
+            let = total
+            let = subtotal
+
+            function firstplus() {
+                let value = parseInt(document.getElementById('firstClass').value, 10);
+                value = isNaN(value) ? 0 : value;
+                value++;
+                let numOfTicket = document.getElementById('firstClass').value = value;
+                firstCalculation(numOfTicket)
+            }
+
+            function firstminus() {
+                let value = parseInt(document.getElementById('firstClass').value, 10);
+                value = isNaN(value) ? 0 : value;
+                if (value > 0) {
+                    value--;
+                }
+                let numOfTicket = document.getElementById('firstClass').value = value;
+                firstCalculation(numOfTicket)
+            }
+
+
+            function economyplus() {
+                let value = parseInt(document.getElementById('economyClass').value, 10);
+                value = isNaN(value) ? 0 : value;
+                value++;
+                let numOfTicket = document.getElementById('economyClass').value = value;
+                economy_Calculation(numOfTicket)
+            }
+
+            function economyminus() {
+                let value = parseInt(document.getElementById('economyClass').value, 10);
+                value = isNaN(value) ? 0 : value;
+                if (value > 0) {
+                    value--;
+                }
+                let numOfTicket = document.getElementById('economyClass').value = value;
+                economy_Calculation(numOfTicket)
+            }
+
+
+            function firstCalculation(numOfTicket) {
+                firstclass = 1
+                firstclass = numOfTicket * 150
+                final_Calculation()
+            }
+
+            function economy_Calculation(numOfTicket) {
+                economy = 1
+                economy = numOfTicket * 100
+                final_Calculation()
+            }
+
+            function final_Calculation() {
+
+                subtotal = firstclass + economy;
+                vat = subtotal * 0.1
+                total = subtotal + vat
+                console.log(economy)
+                document.getElementById("subtotal").innerHTML = "$" + subtotal
+                document.getElementById("vat").innerHTML = "$" + vat
+                document.getElementById("total").innerHTML = "$" + total
+            }
+
+            function confirm() {
+                if (subtotal && vat && total) {
+                    alert("Subtotal: " + subtotal + "           " + "Vat: " + vat + "           " + "Total: " + total +
+                        "\n***********Congratulations!***********")
+                } else {
+                    alert("book your ticket first")
+                }
+
+            }
+        </script>
+
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-<script>
-
-
-    let firstclass=0
-    let = economy=0
-    let = vat
-    let = total
-    let = subtotal
-    
-    function firstplus(){
-        let value = parseInt(document.getElementById('firstClass').value, 10);
-        value = isNaN(value) ? 0 : value;
-        value++;
-       let numberOfTicket= document.getElementById('firstClass').value = value;
-        firstCalculation(numberOfTicket) 
-    }
-    
-    function firstminus(){
-        let value = parseInt(document.getElementById('firstClass').value, 10);
-        value = isNaN(value) ? 0 : value;
-        if(value>0){
-            value--;
-        } 
-       let numberOfTicket= document.getElementById('firstClass').value = value;
-        firstCalculation(numberOfTicket)   
-    }
-    
-    
-    function economyplus(){
-        let value = parseInt(document.getElementById('economyClass').value, 10);
-        value = isNaN(value) ? 0 : value;
-        value++;
-       let numberOfTicket= document.getElementById('economyClass').value = value;
-       economyCalculation(numberOfTicket) 
-    }
-    
-    function economyminus(){
-        let value = parseInt(document.getElementById('economyClass').value, 10);
-        value = isNaN(value) ? 0 : value;
-        if(value>0){
-            value--;
-        } 
-       let numberOfTicket= document.getElementById('economyClass').value = value;
-       economyCalculation(numberOfTicket)   
-    }
-    
-    
-    function firstCalculation(numberOfTicket){
-           firstclass=1
-           firstclass=numberOfTicket*150
-           finalCalculation()
-    }
-    
-    function economyCalculation(numberOfTicket){
-         economy=1
-         economy=numberOfTicket*100
-         finalCalculation()
-    }
-    
-    function finalCalculation(){
-        
-         subtotal=firstclass+economy;
-         vat= subtotal* 0.1
-          total=subtotal+vat
-         console.log(economy)
-         document.getElementById("subtotal").innerHTML="$"+subtotal
-         document.getElementById("vat").innerHTML="$"+vat
-         document.getElementById("total").innerHTML="$"+total
-    }
-    
-    function allart(){
-        if(subtotal && vat && total){
-            alert("Subtotal: "+subtotal+"           "+"Vat: "+vat+"           "+ "Total: "+total+"\n***********Congratulations!***********")
-        }else{
-            alert("****book your ticket first******")
-        }
-        
-    }
-    
-    
-        </script>
